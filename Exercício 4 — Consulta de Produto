@@ -1,0 +1,28 @@
+produtos = {
+    "notebook": 4500,
+    "mouse": 80,
+    "teclado": 150
+}
+
+def buscar_produto(nome_produto):
+    if nome_produto in produtos:
+        return produtos[nome_produto]
+    else:
+        return None
+
+
+mensagem = input("Digite sua pergunta: ").lower()
+
+produto_encontrado = None
+
+# verifica se algum produto está na frase
+for produto in produtos:
+    if produto in mensagem:
+        produto_encontrado = produto
+        break
+
+if produto_encontrado:
+    preco = buscar_produto(produto_encontrado)
+    print(f"O preço do {produto_encontrado} é R$ {preco}")
+else:
+    print("Produto não encontrado.")
