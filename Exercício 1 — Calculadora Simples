@@ -1,3 +1,6 @@
+#Exercício 1 - Calculadora Simples
+import re
+
 def somar(a, b):
     return a + b
 
@@ -5,24 +8,31 @@ def multiplicar(a, b):
     return a * b
 
 
-mensagem = input("Digite sua pergunta: ").lower()
+def calcular(mensagem):
+    mensagem = mensagem.lower()
 
-import re
+    # Pega todos os números da frase
+    numeros = re.findall(r'\d+', mensagem)
 
-# extrai os números da frase
-numeros = list(map(int, re.findall(r'\d+', mensagem)))
+    if len(numeros) < 2:
+        return "Não consegui encontrar dois números."
 
-a = numeros[0]
-b = numeros[1]
+    a = int(numeros[0])
+    b = int(numeros[1])
 
-# identifica a operação
-if "+" in mensagem or "som" in mensagem:
-    resultado = somar(a, b)
+    # Identificando a operação
+    if '+' in mensagem:
+        resultado = somar(a, b)
+        return f"O resultado de {a} + {b} é {resultado}."
 
-elif "multiplique" in mensagem or "multiplicar" in mensagem or "x" in mensagem or "por" in mensagem:
-    resultado = multiplicar(a, b)
+    elif 'multiplique' in mensagem or 'multiplicar' in mensagem:
+        resultado = multiplicar(a, b)
+        return f"O resultado de {a} * {b} é {resultado}."
 
-else:
-    resultado = "Operação não reconhecida"
+    else:
+        return "Desculpe, não entendi a operação."
 
-print("Resultado:", resultado)
+
+# Programa principal
+mensagem = input("Digite sua pergunta: ")
+print(calcular(mensagem))
