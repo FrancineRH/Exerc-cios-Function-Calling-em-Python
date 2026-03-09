@@ -1,1 +1,28 @@
+def somar(a, b):
+    return a + b
 
+def multiplicar(a, b):
+    return a * b
+
+
+mensagem = input("Digite sua pergunta: ").lower()
+
+import re
+
+# extrai os números da frase
+numeros = list(map(int, re.findall(r'\d+', mensagem)))
+
+a = numeros[0]
+b = numeros[1]
+
+# identifica a operação
+if "+" in mensagem or "som" in mensagem:
+    resultado = somar(a, b)
+
+elif "multiplique" in mensagem or "multiplicar" in mensagem or "x" in mensagem or "por" in mensagem:
+    resultado = multiplicar(a, b)
+
+else:
+    resultado = "Operação não reconhecida"
+
+print("Resultado:", resultado)
