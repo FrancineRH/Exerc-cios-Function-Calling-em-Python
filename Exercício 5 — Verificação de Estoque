@@ -1,0 +1,45 @@
+estoque = {
+    "notebook": 5,
+    "mouse": 20,
+    "teclado": 8
+}
+
+def buscar_produto(nome_produto):
+    if nome_produto in estoque:
+        return f"Produto '{nome_produto}' encontrado."
+    else:
+        return "Produto não encontrado."
+
+def verificar_estoque(nome_produto):
+    if nome_produto in estoque:
+        return f"Temos {estoque[nome_produto]} {nome_produto}(s) em estoque."
+    else:
+        return "Produto não encontrado no estoque."
+
+
+mensagem = input("Digite sua pergunta: ").lower()
+
+produto_encontrado = None
+
+# identifica o produto na frase
+for produto in estoque:
+    if produto in mensagem:
+        produto_encontrado = produto
+        break
+
+if produto_encontrado:
+    
+
+    if "quantos" in mensagem or "quantas" in mensagem:
+        resultado = verificar_estoque(produto_encontrado)
+        
+    elif "tem" in mensagem or "estoque" in mensagem:
+        resultado = verificar_estoque(produto_encontrado)
+        
+    else:
+        resultado = buscar_produto(produto_encontrado)
+
+    print(resultado)
+
+else:
+    print("Não consegui identificar o produto.")
