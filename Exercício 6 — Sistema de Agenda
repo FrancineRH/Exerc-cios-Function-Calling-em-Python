@@ -9,28 +9,52 @@ def listar_eventos():
     if not eventos:
         print("Nenhum evento cadastrado.")
     else:
-        print("Seus eventos:")
-        for evento in eventos:
-            print(f"- {evento['titulo']} em {evento['data']}")
+        print("\n Seus eventos:")
+        for i, evento in enumerate(eventos, start=1):
+            print(f"{i}. {evento['titulo']} em {evento['data']}")
 
-mensagem = input("Digite sua mensagem: ").lower()
+def remover_evento(indice):
+    if 0 <= indice < len(eventos):
+        removido = eventos.pop(indice)
+        print(f"Evento '{removido['titulo']}' removido.")
+    else:
+        print("Evento inválido.")
 
+print("\n\t Sistema de Agenda")
+print("Comandos:")
+print(" - criar evento <titulo> <data>")
+print(" - mostrar eventos")
+print(" - remover evento <numero>")
+print(" - sair\n")
 
-if "criar evento" in mensagem:
-    
-    partes = mensagem.split()
-    
- 
-    titulo = partes[2]
-    
+while True:
+    mensagem = input("Digite sua mensagem: ").lower()
 
-    data = partes[3] if len(partes) > 3 else "sem data"
-    
-    criar_evento(titulo, data)
+    if mensagem == "sair":
+        print("Encerrando o programa...")
+        break
 
+    elif "criar evento" in mensagem:
+        partes = mensagem.split()
 
-elif "mostrar" in mensagem and "evento" in mensagem:
-    listar_eventos()
+        if len(partes) >= 4:
+            titulo = partes[2]
+            data = " ".join(partes[3:])
+            criar_evento(titulo, data)
+        else:
+            print("Use: criar evento <titulo> <data>")
 
-else:
-    print("Não entendi o comando.")
+    elif "mostrar eventos" in mensagem:
+        listar_eventos()
+
+    elif "remover evento" in mensagem:
+        partes = mensagem.split()
+
+        if len(partes) >= 3 and partes[2].isdigit():
+            indice = int(partes[2]) - 1
+            remover_evento(indice)
+        else:
+            print("Use: remover evento <numero>")
+
+    else:
+        print("Comando não reconhecido.")
