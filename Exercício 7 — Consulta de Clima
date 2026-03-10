@@ -1,0 +1,29 @@
+clima = {
+    "sao paulo": "24°C e nublado",
+    "bauru": "30°C e ensolarado",
+    "curitiba": "18°C e chuvoso"
+}
+
+def buscar_clima(cidade):
+    cidade = cidade.lower()
+    if cidade in clima:
+        return f"O clima em {cidade.title()} é {clima[cidade]}."
+    else:
+        return "Cidade não encontrada na base de dados."
+
+
+mensagem = input("Digite sua pergunta: ").lower()
+
+cidade_encontrada = None
+
+# procurar a cidade na frase
+for cidade in clima:
+    if cidade in mensagem:
+        cidade_encontrada = cidade
+        break
+
+if cidade_encontrada:
+    resultado = buscar_clima(cidade_encontrada)
+    print(resultado)
+else:
+    print("Não consegui identificar a cidade.")
