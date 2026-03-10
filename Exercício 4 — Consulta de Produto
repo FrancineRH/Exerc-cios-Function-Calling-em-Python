@@ -15,7 +15,6 @@ mensagem = input("Digite sua pergunta: ").lower()
 
 produto_encontrado = None
 
-# verifica se algum produto está na frase
 for produto in produtos:
     if produto in mensagem:
         produto_encontrado = produto
