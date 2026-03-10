@@ -9,10 +9,8 @@ def fahrenheit_para_celsius(f):
 
 mensagem = input("Digite sua pergunta: ").lower()
 
-# extrai o número da frase
 numero = float(re.findall(r'\d+', mensagem)[0])
 
-# identifica qual conversão fazer
 if "celsius" in mensagem and "fahrenheit" in mensagem:
     resultado = celsius_para_fahrenheit(numero)
     print(f"Resultado: {resultado:.2f} °F")
