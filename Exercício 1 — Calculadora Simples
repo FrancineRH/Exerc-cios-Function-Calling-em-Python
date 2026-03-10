@@ -1,4 +1,5 @@
 #Exercício 1 - Calculadora Simples
+#Exercício 1 - Calculadora Simples
 import re
 
 def somar(a, b):
@@ -11,7 +12,6 @@ def multiplicar(a, b):
 def calcular(mensagem):
     mensagem = mensagem.lower()
 
-    # Pega todos os números da frase
     numeros = re.findall(r'\d+', mensagem)
 
     if len(numeros) < 2:
@@ -20,7 +20,6 @@ def calcular(mensagem):
     a = int(numeros[0])
     b = int(numeros[1])
 
-    # Identificando a operação
     if '+' in mensagem:
         resultado = somar(a, b)
         return f"O resultado de {a} + {b} é {resultado}."
@@ -32,7 +31,5 @@ def calcular(mensagem):
     else:
         return "Desculpe, não entendi a operação."
 
-
-# Programa principal
 mensagem = input("Digite sua pergunta: ")
 print(calcular(mensagem))
