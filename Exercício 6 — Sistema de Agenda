@@ -1,0 +1,36 @@
+eventos = []
+
+def criar_evento(titulo, data):
+    evento = {"titulo": titulo, "data": data}
+    eventos.append(evento)
+    print(f"Evento '{titulo}' criado para {data}.")
+
+def listar_eventos():
+    if not eventos:
+        print("Nenhum evento cadastrado.")
+    else:
+        print("Seus eventos:")
+        for evento in eventos:
+            print(f"- {evento['titulo']} em {evento['data']}")
+
+mensagem = input("Digite sua mensagem: ").lower()
+
+
+if "criar evento" in mensagem:
+    
+    partes = mensagem.split()
+    
+ 
+    titulo = partes[2]
+    
+
+    data = partes[3] if len(partes) > 3 else "sem data"
+    
+    criar_evento(titulo, data)
+
+
+elif "mostrar" in mensagem and "evento" in mensagem:
+    listar_eventos()
+
+else:
+    print("Não entendi o comando.")
